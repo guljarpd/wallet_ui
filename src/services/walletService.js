@@ -20,6 +20,9 @@ export const createWallet = async (name, username, initialBalance) => {
     const response = await axios.request(config);
     return response.data;
   } catch (error) {
+    if (error?.response?.data?.error?.message) {
+      return {error: {message: error.response.data.error.message}}
+    }
     return {error: {message: 'Error creating wallet'}}
   }
 };
@@ -30,6 +33,9 @@ export const getWalletDetails = async (id) => {
     const response = await axios.get(`${API_BASE_URL}/wallet/${id}`);
     return response.data;
   } catch (error) {
+    if (error?.response?.data?.error?.message) {
+      return {error: {message: error.response.data.error.message}}
+    }
     return {error: {message: 'Error fetching wallet details'}}
   }
 };
@@ -51,6 +57,9 @@ export const makeTransaction = async (id, amount, description) => {
     const response = await axios.request(config);
     return response.data;
   } catch (error) {
+    if (error?.response?.data?.error?.message) {
+      return {error: {message: error.response.data.error.message}}
+    }
     return {error: {message: 'Error making wallet transaction'}}
   }
 };
@@ -61,6 +70,9 @@ export const getTransactions = async (walletId, skip, limit) => {
     const response = await axios.get(`${API_BASE_URL}/transactions?walletId=${walletId}&skip=${skip}&limit=${limit}`);
     return response.data;
   } catch (error) {
+    if (error?.response?.data?.error?.message) {
+      return {error: {message: error.response.data.error.message}}
+    }
     return {error: {message: 'Error fetching wallet transaction'}}
   }
 };
