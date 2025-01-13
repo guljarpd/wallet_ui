@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Wallet from './components/Wallet';
 import TransactionHistory from './components/TransactionHistory';
-import { Typography } from '@mui/material';
 
 function App() {
   return (
